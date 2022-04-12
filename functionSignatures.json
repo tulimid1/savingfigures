@@ -1,0 +1,28 @@
+{
+    "_schemaVersion": "1.0.0",
+    
+    "auto_save":
+   {
+      "inputs":
+      [
+         {"name":"fig_name", "kind":"required","type":["char"],"purpose":"Figure file name"},
+         {"name":"close_after", "kind":"namevalue","type":["logical"],"purpose":"Close figure after saved (default=true)"},   
+         {"name":"fig_handle", "kind":"namevalue","type":["matlab.ui.Figure"],"purpose":"Figure handle (default=gcf())"},   
+         {"name":"extension", "kind":"namevalue","type":["char"],"purpose":"Figure file extension (default='.png')"},
+         {"name":"bg_color", "kind":"namevalue","type":["char"],"purpose":"Figure background color (default='current')"},    
+         {"name":"custom_folder", "kind":"namevalue","type":["char"],"purpose":"Custom folder name (default='')"},  
+         {"name":"folder_level", "kind":"namevalue","type":["numeric"],"purpose":"Folder level for custom folder (default=3)"}   
+      ]
+   },
+   "writeGif": 
+   {
+      "inputs": 
+      [
+         {"name": "filename", "kind":"required", "type": ["char"], "purpose": ".gif file name"},
+         {"name": "iter", "kind":"required", "type": ["numeric"], "purpose": "Current iteration"},
+         {"name": "delayTime", "kind":"namevalue", "type": ["numeric"], "purpose": "Delay time between frames (default = 0.1)"},
+         {"name":"custom_folder", "kind":"namevalue","type":["char"],"purpose":"Custom folder name (default='')"},  
+         {"name":"folder_level", "kind":"namevalue","type":["numeric"],"purpose":"Folder level for custom folder (default=3)"} 
+      ]
+   }
+}

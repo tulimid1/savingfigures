@@ -1,9 +1,9 @@
 from distutils.core import setup
 setup(
-  name = 'savingfigR',         # How you named your package folder (MyLib)
-  packages = ['savingfigR'],   # Chose the same as "name"
-  version = '1.0.4',      # Start with a small number and increase it with every change you make
-  license='MIT',        # Chose a license from here: https://help.github.com/articles/licensing-a-repository
+  name = 'savingfigures',         # How you named your package folder (MyLib)
+  packages = ['savingfigures'],   # Chose the same as "name"
+  version = '1.0.3',      # Start with a small number and increase it with every change you make
+  license='GPL-3',        # Chose a license from here: https://help.github.com/articles/licensing-a-repository
   description = 'Save figures and gifs in an organized manner',   # Give a short description about your library
   author = 'Duncan Tulimieri',                   # Type in your name
   author_email = 'tulimid@udel.edu',      # Type in your E-Mail

@@ -39,19 +39,16 @@ date_dir = sprintf('%s', date);
 full_fig_name = append(fig_name, p.Results.extension); 
 
 %% Go to specific location 
-% find / create figures folder 
-find_create_enter_folder('figures');
 
 if isempty(p.Results.custom_folder)
+    find_create_enter_folder('figures');
     find_create_enter_folder(date_dir);
 else 
-    switch p.Results.folder_level 
-        case 1 % working directory 
-            cd(current_dir);
-%         case 2 % figures folder 
-            % already here 
-        case 3 % current date folder 
-            find_create_enter_folder(date_dir); 
+    if p.Results.folder_level >= 2 % figures folder 
+        find_create_enter_folder('figures');
+    end
+    if p.Results.folder_level == 3 % date folder 
+        find_create_enter_folder(date_dir); 
     end
     find_create_enter_folder(p.Results.custom_folder);
 end
@@ -82,10 +79,8 @@ find_create_enter_folder - find or create and enter a folder
 INPUTS:
 folder_name: folder name to search/create and enter 
 %}
-if isfolder(folder_name)
-    cd(folder_name)
-else
+if ~isfolder(folder_name)
     mkdir(folder_name)
-    cd(folder_name)
 end
+cd(folder_name)
 end

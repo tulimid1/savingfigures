@@ -29,18 +29,16 @@ current_dir = pwd;
 date_dir = sprintf('%s', date); 
 
 %% Go to specific locaiton 
-find_create_enter_folder('figures'); 
 
 if isempty(p.Results.custom_folder)
+    find_create_enter_folder('figures');
     find_create_enter_folder(date_dir);
 else 
-    switch p.Results.folder_level 
-        case 1 % working directory 
-            cd(current_dir);
-%         case 2 % figures folder 
-            % already here 
-        case 3 % current date folder 
-            find_create_enter_folder(date_dir); 
+    if p.Results.folder_level >= 2 % figures folder 
+        find_create_enter_folder('figures');
+    end
+    if p.Results.folder_level == 3 % date folder 
+        find_create_enter_folder(date_dir); 
     end
     find_create_enter_folder(p.Results.custom_folder);
 end

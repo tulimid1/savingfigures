@@ -34,7 +34,13 @@
 % **/*.bak
 %
 
-**/.git</param.exclude.filters>
+**/.git
+**/.DS_Store
+**/demos.xml
+**/setup.cfg
+**/setup.py
+**/savingfigures
+**/Using_SaveFiles.ipynb</param.exclude.filters>
     <param.exclude.pcodedmfiles>true</param.exclude.pcodedmfiles>
     <param.examples>&lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;examples&gt;
@@ -114,7 +120,6 @@
       <file>${PROJECT_ROOT}/README.md</file>
       <file>${PROJECT_ROOT}/Using_SaveFiles.mlx</file>
       <file>${PROJECT_ROOT}/auto_save.m</file>
-      <file>${PROJECT_ROOT}/demos.xml</file>
       <file>${PROJECT_ROOT}/figures</file>
       <file>${PROJECT_ROOT}/functionSignatures.json</file>
       <file>${PROJECT_ROOT}/html</file>

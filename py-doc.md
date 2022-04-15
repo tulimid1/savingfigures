@@ -6,7 +6,7 @@ permalink: /Python/
 
 # Installation 
 
-    pip install savingfigR
+    pip install savingfigures
 
 # Functions 
 

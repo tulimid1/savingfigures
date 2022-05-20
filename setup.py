@@ -2,13 +2,13 @@ from distutils.core import setup
 setup(
   name = 'savingfigures',         # How you named your package folder (MyLib)
   packages = ['savingfigures'],   # Chose the same as "name"
-  version = '1.0.4',      # Start with a small number and increase it with every change you make
+  version = '1.0.6',      # Start with a small number and increase it with every change you make
   license='GPL-3',        # Chose a license from here: https://help.github.com/articles/licensing-a-repository
   description = 'Save figures and gifs in an organized manner',   # Give a short description about your library
   author = 'Duncan Tulimieri',                   # Type in your name
   author_email = 'tulimid@udel.edu',      # Type in your E-Mail
   url = 'https://tulimid1.github.io/',   # Provide either the link to your github or to your website
-  download_url = 'https://github.com/tulimid1/savingfigures/archive/refs/tags/1.0.4.tar.gz',    # I explain this later on
+  download_url = 'https://github.com/tulimid1/savingfigures/archive/refs/tags/1.0.6.tar.gz',    # I explain this later on
   keywords = ['figures', 'gifs', 'save'],   # Keywords that define your package best
   install_requires=[            # I get to this in a second
           'matplotlib', 

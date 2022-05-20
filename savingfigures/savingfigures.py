@@ -27,7 +27,7 @@ def auto_save(fig_obj, fig_name, close_after=True, extension='.png', custom_fold
     ## Local functions 
     def find_create_enter_folder(path):
         if not os.path.exists(path):
-            os.mkdir(path)
+            os.makedirs(path)
         os.chdir(path)
     def saveFigure(fig_obj, fig_name, extension):
         if '.png' in fig_name:

@@ -42,7 +42,8 @@ else
     end
     find_create_enter_folder(p.Results.custom_folder);
 end
-
+%% Set figure background color as axes background color
+set(gcf(), 'color', get(gca(), 'color')); 
 %% Save to folder 
 saveGif(iter, filename, p.Results.delayTime); 
 cd(current_dir)
@@ -52,10 +53,15 @@ function saveGif(iter, filename, delayTime)
 frame = getframe(gcf); 
 im = frame2im(frame); 
 [imind,cm] = rgb2ind(im,256); 
+% Find index for background color in colormap
+transparent_idx = argmin(sum(abs(cm - get(gcf(), 'color')),2)); 
+gif_namevalues = {'delaytime', delayTime, ...
+                'transparentcolor', transparent_idx-1, ...
+                'DisposalMethod', 'restoreBG'}; 
 if iter == 1
-    imwrite(imind,cm,filename,'gif', 'Loopcount',inf, 'delaytime', delayTime);
+    imwrite(imind,cm,filename,'gif', 'Loopcount', inf, gif_namevalues{:});
 else
-    imwrite(imind,cm,filename,'gif','WriteMode','append', 'delaytime', delayTime); 
+    imwrite(imind,cm,filename,'gif','WriteMode','append', gif_namevalues{:});
 end
 end
 

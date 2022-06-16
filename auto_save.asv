@@ -24,12 +24,12 @@ varargin: (use name-value pairs)
 
 %% Parse inputs 
 p = inputParser;
-mustBeColor = @(x) ischar(x) || length(x) == 3 && sum(x>1)==0 && sum(x<0)==0;
+mustBeColor = @(x) ischar(x) || le
 addRequired(p, 'fig_name', @mustBeText);             
 addParameter(p, 'close_after', true, @islogical);             
 addParameter(p, 'fig_handle', gcf, @(x) strcmpi(class(x), 'matlab.ui.Figure'));                           
 addParameter(p, 'extension', '.png', @mustBeText);    
-addParameter(p, 'bg_color', 'current', mustBeColor);  
+addParameter(p, 'bg_color', 'current');  
 addParameter(p, 'custom_folder', '', @mustBeText);
 addParameter(p, 'folder_level', 3, @(x) isscalar(x) & x>=1 & x<=3 & rem(x,1)==0); 
 parse(p, fig_name, varargin{:}); % parse 

@@ -9,7 +9,6 @@
          {"name":"close_after", "kind":"namevalue","type":["logical"],"purpose":"Close figure after saved (default=true)"},   
          {"name":"fig_handle", "kind":"namevalue","type":["matlab.ui.Figure"],"purpose":"Figure handle (default=gcf())"},   
          {"name":"extension", "kind":"namevalue","type":["char"],"purpose":"Figure file extension (default='.png')"},
-         {"name":"bg_color", "kind":"namevalue","type":["char"],"purpose":"Figure background color (default='current')"},    
          {"name":"custom_folder", "kind":"namevalue","type":["char"],"purpose":"Custom folder name (default='')"},  
          {"name":"folder_level", "kind":"namevalue","type":["numeric"],"purpose":"Folder level for custom folder (default=3)"}   
       ]

@@ -10,7 +10,6 @@ varargin: (use name-value pairs)
     close_after: close figure after saved, default=true (class: boolean)
     fig_handle: figure handle
     extension: extension to save file, default='.png' (class: string) 
-    bg_color: background color, default='current'
     custom_folder: custom folder name to save in, default='' (class: string)
     folder_level: level for custom folder, default=3
         level 1: pwd 
@@ -24,12 +23,10 @@ varargin: (use name-value pairs)
 
 %% Parse inputs 
 p = inputParser;
-mustBeColor = @(x) ischar(x) || length(x) == 3 && sum(x>1)==0 && sum(x<0)==0;
 addRequired(p, 'fig_name', @mustBeText);             
 addParameter(p, 'close_after', true, @islogical);             
 addParameter(p, 'fig_handle', gcf, @(x) strcmpi(class(x), 'matlab.ui.Figure'));                           
 addParameter(p, 'extension', '.png', @mustBeText);    
-addParameter(p, 'bg_color', 'current', mustBeColor);  
 addParameter(p, 'custom_folder', '', @mustBeText);
 addParameter(p, 'folder_level', 3, @(x) isscalar(x) & x>=1 & x<=3 & rem(x,1)==0); 
 parse(p, fig_name, varargin{:}); % parse 
@@ -37,7 +34,6 @@ parse(p, fig_name, varargin{:}); % parse
 %% Set up 
 current_dir = pwd;
 date_dir = sprintf('%s', date); 
-full_fig_name = append(fig_name, p.Results.extension); 
 
 %% Go to specific location 
 
@@ -55,7 +51,8 @@ else
 end
 
 % Save to folder (exportgraphics saves subplots better) 
-saveFigure(p.Results.fig_handle, full_fig_name, p.Results.bg_color); 
+set(p.Results.fig_handle, 'color', get(gca(), 'color')); 
+saveFigure(p.Results.fig_handle, fig_name, p.Results.extension); 
 
 %% Close and return to working directory 
 if p.Results.close_after
@@ -65,12 +62,15 @@ cd(current_dir)
 
 end
 
-function saveFigure(figure_handle, figure_name, bg_color)
-if ~contains(figure_name, '.fig')
-    exportgraphics(figure_handle, figure_name, 'backgroundcolor', bg_color);
-else
-    savefig(figure_handle, figure_name);
-end
+function saveFigure(figure_handle, filename, ext)
+frame = getframe(figure_handle); 
+im = frame2im(frame); 
+[imind,cm] = rgb2ind(im,256); 
+% Find index for background color in colormap
+transparent_idx = argmin(sum(abs(cm - get(figure_handle, 'color')),2));  
+imwrite(imind,cm,filename,'gif', 'Loopcount', inf, 'transparentcolor', transparent_idx-1);
+copyfile(filename, append(filename, ext)); % change to extension
+delete(filename); % delete old file 
 end
 
 function find_create_enter_folder(folder_name)
